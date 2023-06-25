@@ -151,12 +151,6 @@ export default function Home({decoracoes}) {
         </div>
       </section>
 
-      <div className="">
-        {decoracoes.map(decoracao => (
-          <p>{decoracao.id}</p>
-        ))}
-      </div>
-
       <section id="Mostruario">
         <div className='Mostruario'>
           <h2 className={`${bernadette.className} text-gray-800 !text-3xl`}>Transforme seus eventos em ocasiões inesquecíveis</h2>
@@ -247,7 +241,7 @@ Home.getLayout = function getLayout(page) {
 export async function getServerSideProps() {
   const decoracoes = await prisma.decoracoes.findMany({
     where: { disponivel: true },
-    include: { imagem: true},
+    select: { id:true, imagem: true},
     take: 5
   });
 
