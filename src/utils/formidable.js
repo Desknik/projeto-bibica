@@ -1,4 +1,4 @@
-const formidable = require('formidable');
+import formidable from 'formidable';
 
 export async function getData(formData) {
   const data = await new Promise(function (resolve, reject) {

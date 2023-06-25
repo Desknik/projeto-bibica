@@ -78,7 +78,7 @@ export default function Perfil(userData) {
       <Head>
           <title>Alterar Senha</title>
       </Head>
-      <div style={{height: '70vh'}} className="flex justify-center items-center">
+      <div style={{height: '70vh'}} className="flex justify-center items-center px-8">
 
           {/* Mensagem de Erro*/}
           <span ref={errorBoxRef} className='absolute bottom-5 right-5 z-30  opacity-0 transition-opacity duration-300 ease-in-out bg-red-400/60 border-2 border-red-500 text-red-200 font-medium rounded-lg inline-block px-2 py-2 my-1'>{errorMessage}</span>

@@ -66,15 +66,15 @@ export default function Navbar() {
               </div>
 
               <Link href={'/'}>
-                <Image className='h-8' src={logo} alt='Logo'/>
+                <Image className='w-auto h-8' src={logo} alt='Logo'/>
               </Link>
 
               <div className="hidden lg:flex lg:gap-x-12">
-                <Link href='/Produtos' className="text-white font-normal hover:opacity-70">Produtos</Link>
-                <Link href='/Decoracoes' className="text-white font-normal hover:opacity-70">Decorações</Link>
-                <Link href='/Sobre' className="text-white font-normal hover:opacity-70">Sobre nós</Link>
+                <Link href='/Produtos' className="text-white font-normal md:hover:opacity-70">Produtos</Link>
+                <Link href='/Decoracoes' className="text-white font-normal md:hover:opacity-70">Decorações</Link>
+                <Link href='/Sobre' className="text-white font-normal md:hover:opacity-70">Sobre nós</Link>
                 <ScrollLink 
-                  className="text-white font-normal hover:opacity-70 cursor-pointer"
+                  className="text-white font-normal md:hover:opacity-70 cursor-pointer"
                   to="footer"
                   spy={true}
                   smooth={true}

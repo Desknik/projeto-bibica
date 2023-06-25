@@ -5,7 +5,7 @@ import {FaFacebookF, FaInstagram, FaWhatsapp} from "react-icons/fa";
 export default function Footer() {
 
   return (
-    <footer className='bg-neutral-900'>
+    <footer id='footer' className='bg-neutral-900'>
         <div className='flex flex-col justify-center items-center py-5 text-white'>
             <h2 className='font-bold text-lg text-white my-3'>Doceria Bibica</h2>
                 <div className="flex max-md:flex-col items-start gap-10">

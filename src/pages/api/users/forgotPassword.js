@@ -8,6 +8,10 @@ export default async function handler(req, res) {
         const prisma = new PrismaClient()
         const { email } = req.body;
 
+        if(!email){
+            return res.status(400).json({ message: 'E-mail inválido' });
+        }
+
         const generatePasswordResetToken = () => {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             let token = '';

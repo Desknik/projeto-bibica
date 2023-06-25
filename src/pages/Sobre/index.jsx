@@ -17,7 +17,7 @@ export default function Sobre() {
       <Head>
         <title>Sobre nós</title>
       </Head>
-      <div className='my-10 px-20'>
+      <div className='my-10 md:px-20 px-8'>
         <h1 className='my-4 font-bold text-2xl'>Sobre a Doceria Bibica</h1>
         <div className="flex flex-col gap-y-5">
             <p>Olá{user && ` ${user.nickname}`}! Bem vindo a nossa doceria, irei contar um pouco sobre ela para você!</p>
