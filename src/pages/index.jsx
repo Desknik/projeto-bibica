@@ -238,7 +238,7 @@ Home.getLayout = function getLayout(page) {
 }
 
 
-export async function getServerSideProps() {
+export async function getInitialProps() {
   const prisma = new PrismaClient();
   const decoracoes = await prisma.decoracoes.findMany({
     where: { disponivel: true },
