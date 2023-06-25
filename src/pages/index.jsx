@@ -64,7 +64,7 @@ export default function Home({decoracoes}) {
         </div>
       </section>
 
-      <section className='Escolha'> 
+      <section className='Escolha sm:px-20 px-10'> 
         <div className='content'>
           <div className="leftBox">
               <div className='text'>
@@ -153,7 +153,7 @@ export default function Home({decoracoes}) {
 
       <section id="Mostruario">
         <div className='Mostruario'>
-          <h2 className={`${bernadette.className} text-gray-800 text-xl`}>Transforme seus eventos em ocasiões inesquecíveis</h2>
+          <h2 className={`${bernadette.className} text-gray-800 !text-3xl`}>Transforme seus eventos em ocasiões inesquecíveis</h2>
           <p className='font-medium text-gray-800 text-center md:text-lg sm:text-base text-sm'>Nós temos a solução perfeita para transformar sua  festa infantil, um aniversário de 15 anos ou até mesmo seu casamento em uma ocasião inesquecível. Com nossas incríveis decorações, você pode criar um ambiente único e mágico que irá surpreender e encantar seus convidados!</p>
       
           {!!decoracoes && decoracoes.length > 0 && 
@@ -195,7 +195,7 @@ export default function Home({decoracoes}) {
               </Swiper>
             </div>
           }
-          <Link href='/Decoracoes' className={`${bernadette.className} z-30 text-gray-800 text-xl transition-all md:hover:opacity-80`}>Agendar</Link>
+          <Link href='/Decoracoes' className={`${bernadette.className} z-30 text-gray-800 text-2xl transition-all md:hover:opacity-80`}>Agendar</Link>
         </div>
       </section>
 
@@ -213,7 +213,7 @@ export default function Home({decoracoes}) {
             <div className="absolute w-full h-full bg-gray-800/30 md:hidden"></div>
 
             <div className="flex flex-col justify-center items-center z-10 p-10 absolute w-full md:hidden">
-              <h2 className={`${bernadette.className} text-white text-2xl`}>Conheça nossa Doceria</h2>
+              <h2 className={`${bernadette.className} text-white text-3xl`}>Conheça nossa Doceria</h2>
               <p className='font-semi text-white text-center md:text-lg sm:text-base text-sm'>Venha conhecer a história da Doceria Bibica e descobrir como oferecemos a melhor experiência em doces e decorações para eventos especiais. Clique abaixo para saber mais.</p>
               <Link href="/Sobre" className={`${bernadette.className} z-30 text-white text-2xl transition-all md:hover:opacity-80`}>Saiba Mais</Link>
             </div>
@@ -222,7 +222,7 @@ export default function Home({decoracoes}) {
           <div className="flex flex-col justify-center items-center max-md:hidden md:w-1/2 lg:w-3/5 z-10 p-10">
             <h2 className={`${bernadette.className} text-gray-800 text-3xl`}>Conheça nossa Doceria</h2>
             <p>Venha conhecer a história da Doceria Bibica e descobrir como oferecemos a melhor experiência em doces e decorações para eventos especiais. Clique abaixo para saber mais.</p>
-            <Link href="/Sobre" className={`${bernadette.className} z-30 text-gray-800 text-xl transition-all md:hover:opacity-80`}>Saiba Mais</Link>
+            <Link href="/Sobre" className={`${bernadette.className} z-30 text-gray-800 text-2xl transition-all md:hover:opacity-80`}>Saiba Mais</Link>
           </div>
         </section>
     </>
@@ -238,7 +238,7 @@ Home.getLayout = function getLayout(page) {
 }
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const prisma = new PrismaClient();
   const decoracoes = await prisma.decoracoes.findMany({
     where: { disponivel: true },
