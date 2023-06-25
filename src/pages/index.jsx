@@ -238,12 +238,7 @@ Home.getLayout = function getLayout(page) {
 }
 
 
-export async function getServerSideProps(ctx) {
-  /* Criará os dados iniciais do banco */
-  //await createInitialClassUsers(); //Cria as classses de usuários iniciais caso não existam no banco
-  //await createInitialSituations(); //Cria os tipos de situações iniciais caso não não existam no banco
- 
-  
+export async function getStaticProps() {
   const prisma = new PrismaClient();
   const decoracoes = await prisma.decoracoes.findMany({
     where: { disponivel: true },
