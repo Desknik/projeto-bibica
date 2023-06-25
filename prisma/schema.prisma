@@ -1,0 +1,195 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  relationMode = "prisma"
+}
+
+
+//Usuários
+
+model Usuario {
+  id Int @id @default(autoincrement())
+  dados DadosUsuario? // Define a relação um para um com a tabela "DadosUsuario"
+  classeUsuarioId Int @default(2) // 1 = administrador, 2 = cliente
+  classeUsuario    ClasseUsuario @relation(fields: [classeUsuarioId], references: [id])
+  
+  nickname String @db.VarChar(40)
+  email String @db.VarChar(75) @unique
+  senha String
+  tokenAlterarSenha String?
+  dataExpiracaoToken DateTime? @db.DateTime(0)
+  banido Boolean @default(false)
+
+  pedidos Pedido[]
+
+  @@index([classeUsuarioId])
+}
+
+model DadosUsuario {
+  id     Int     @id @default(autoincrement())
+  usuarioId Int @unique
+  usuario Usuario @relation(fields: [usuarioId], references: [id]) // Define a relação um para um com a tabela "Usuario"
+  nome         String? 
+  endereco     String? 
+  numCasa      String? @db.VarChar(5)
+  complemento  String? @db.VarChar(40)
+  cep          String? @db.VarChar(9)
+  cidade       String? @db.VarChar(40)
+  bairro       String? @db.VarChar(40)
+  uf           String? @db.VarChar(2)
+  telefone     String? @db.VarChar(15)
+}
+
+model ClasseUsuario { //
+  id Int  @id @default(autoincrement())
+  tipo      String @db.VarChar(10) @unique
+  usuarios Usuario[]
+}
+
+// Produto
+
+model Produto {
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(50)
+  descricao String
+  imagemId Int
+  imagem Imagens @relation(fields: [imagemId],references: [id])
+  disponivel Boolean @default(true)
+
+
+  categoriaId Int
+  categoria Categoria @relation(fields: [categoriaId], references: [id])
+
+  subCategoriaId Int?
+  subCategoria SubCategoria? @relation(fields: [subCategoriaId], references: [id])
+ 
+  unidadeMedidaId Int
+  unidadeMedida UnidadeMedida @relation(fields: [unidadeMedidaId], references: [id])
+  
+  saborId Int
+  sabor Sabor @relation(fields: [saborId], references: [id])
+
+  corId Int
+  cor Cor @relation(fields: [corId], references: [id])
+  precoUnitario Decimal @db.Decimal(18,2)
+
+  detalhesPedidos DetalhesPedido[]
+
+  @@index([unidadeMedidaId])
+  @@index([categoriaId])
+  @@index([subCategoriaId])
+  @@index([saborId])
+  @@index([corId])
+  @@index([imagemId])
+}
+
+model Categoria {
+  id Int @id @default(autoincrement())
+  tipo String @db.VarChar(40) @unique
+  subcategorias SubCategoria []
+  produtos Produto []
+  disponivel Boolean @default(true)
+}
+
+model SubCategoria {
+  id Int @id @default(autoincrement())
+  tipo String @db.VarChar(40)
+  categoriaId Int
+  categoria Categoria @relation(fields: [categoriaId], references: [id])
+  produtos Produto []
+  disponivel Boolean @default(true)
+  @@index([categoriaId])
+}
+
+
+model UnidadeMedida {
+  id Int @id @default(autoincrement())
+  tipo String @db.VarChar(20) @unique
+  disponivel Boolean @default(true)
+  produtos Produto[]
+}
+
+model Sabor {
+  id Int @id @default(autoincrement())
+  sabor String @db.VarChar(40) @unique
+  disponivel Boolean @default(true)
+  produtos Produto[]
+}
+
+model Cor {
+  id Int @id @default(autoincrement())
+  cor String @db.VarChar(40) @unique
+  disponivel Boolean @default(true)
+  produtos Produto[]
+}
+
+// Pedido
+model Situacao { //
+  id Int @id @default(autoincrement())
+  situacao String @db.VarChar(25) @unique
+  pedidos Pedido []
+}
+
+model Pedido {
+  id Int @id @default(autoincrement())
+  detalhes DetalhesPedido[]
+  situacaoId Int @default(1)
+  situacao Situacao @relation(fields: [situacaoId], references: [id])
+  usuarioId Int
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  
+  pago Boolean @default(false) 
+  descricao String?
+
+  originadoPlataforma Boolean @default(true)
+  metodoEntrega String 
+
+  dataPedido DateTime @db.DateTime(0)
+  dataPagamento DateTime? @db.DateTime(0)
+  dataEntrega DateTime? @db.DateTime(0)
+  desconto Decimal? @db.Decimal(18,2)
+  precoTotal Decimal @db.Decimal(18,2) 
+
+  @@index([situacaoId])
+  @@index([usuarioId])
+}
+
+model DetalhesPedido {
+  id Int @id @default(autoincrement())
+
+  pedidoId Int  
+  pedido Pedido @relation(fields: [pedidoId], references: [id])
+  
+  produtoId Int
+  produto Produto @relation(fields: [produtoId], references: [id])
+
+  quant Int 
+  precoUnitario Decimal @db.Decimal(18,2) 
+  @@index([pedidoId])
+  @@index([produtoId])
+}
+
+model Decoracoes{
+  id Int @id @default(autoincrement())
+  disponivel Boolean @default(true)
+  imagemId Int
+  imagem Imagens @relation(fields: [imagemId],references: [id])
+  @@index([imagemId])
+}
+
+model Imagens {
+  id Int @id @default(autoincrement())
+  publicId String @unique
+  format   String
+  version  String
+  decoracoes Decoracoes[]
+  produtos Produto[]
+}

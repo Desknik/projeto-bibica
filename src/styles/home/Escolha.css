@@ -1,0 +1,229 @@
+.Escolha{   
+    position: relative;
+    height: 512px;
+
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(../../assets/img/backgrounds/Background01.png);
+}
+
+.Escolha .content{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    height: 100%;
+}
+
+.Escolha .leftBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 100%;
+    max-width: 800px;
+    z-index: 999;
+}
+
+.Escolha .leftBox .text{
+    max-width: 500px;
+}
+
+.Escolha .leftBox h2{
+    color:white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.Escolha .leftBox p{
+    text-align: center;
+    color:white;
+}
+
+.Escolha .leftBox .vote{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.Escolha .leftBox .vote .voteBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+   
+    width: 130px;
+    height: 45px;
+    padding: 3px;
+
+    border: 1px solid var(--pink2);
+    background-color: #f3357b36;
+    backdrop-filter: blur(5px);
+
+    border-radius: 10px;
+}
+
+.Escolha .leftBox .vote .voteBox .voteInput{
+    -webkit-appearance: none;
+    width: 120px;
+    height: 10px;
+    margin-top: 5px;
+
+    outline: none;
+    overflow: hidden;
+    
+    background-color: #D9D9D9;
+    border-radius: 9px;
+}
+
+
+.Escolha .leftBox .vote .voteBox .voteInput::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 10px;
+   
+    border-radius: 50%;
+    background: var(--secundary);
+    box-shadow: -407px 0 0 400px var(--secundary);
+}
+
+.Escolha .rightBox{
+    width: 70%;
+}
+
+.Escolha .rightBox .SwiperSlide{
+    width: 300px;
+    height: 390px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.Escolha .rightBox .SwiperSlide .swiperContent .swiperImg{
+    width: 300px;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.Escolha .rightBox .SwiperSlide .swiperContent{
+    position: relative;
+}
+
+.Escolha .rightBox .SwiperSlide .votar{
+    position: absolute;
+    padding: 8px;
+    top: 2%;
+    right: 2%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.Escolha .rightBox .SwiperSlide .votar:hover{
+    opacity: 0.7;
+}
+
+.Escolha .rightBox .SwiperSlide .text{
+    position: absolute;
+    bottom: 40px;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Escolha .rightBox .SwiperSlide .text h4{
+    color: white;
+    font-weight: normal;
+    font-size: 1.7em;
+}
+
+.Escolha .rightBox .SwiperSlide .text button{
+    color: white;
+    font-weight: normal;
+    font-size: 1.3em;
+    padding: 1px 7px;
+}
+
+.Escolha .rightBox .SwiperSlide .text button:hover{
+    opacity: 0.7;
+}
+
+
+
+/*
+xs, extra-small: 0px
+sm, small: 600px
+md, medium: 900px
+lg, large: 1200px
+xl, extra-large: 1536px */
+
+@media (max-width: 900px){
+
+    .Escolha{   
+        position: relative;
+        height: 100%;
+        padding: 30px 0px;
+    }
+    
+    .Escolha .content{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    
+    .Escolha .leftBox .vote{
+        display: none;
+    }
+
+    
+    .Escolha .rightBox .SwiperSlide{
+        width: 230px;
+        height: 290px;
+    }
+    
+    
+    .Escolha .rightBox .SwiperSlide .swiperContent .swiperImg{
+        width: 230px;
+        height: 290px;
+    }
+    
+    .Escolha .rightBox .SwiperSlide .votar{
+       display: none;
+    }
+
+    .Escolha .rightBox .SwiperSlide .text h4{
+        font-size: 1.5em;
+    }
+    
+    .Escolha .rightBox .SwiperSlide .text button{
+        font-size: 1em;
+        padding: 1px 7px;
+    }
+}
+
+@media (max-width: 600px){
+    .Escolha .leftBox h2{
+        font-size: 1.7rem;
+    }
+
+    .Escolha .rightBox .SwiperSlide .text button{
+        margin-top: 5px;
+        font-size: 1em;
+        padding: 5px 7px 3px;
+    }
+}

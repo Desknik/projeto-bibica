@@ -1,0 +1,27 @@
+.navbar{
+    background-image: url(../../assets/img/backgrounds/Background04.png);
+    background-repeat: repeat;
+    background-size: 300px;
+    background-position: center;
+}
+
+/* Estiliza o polegar da barra de rolagem */
+.scroll::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+    transition: opacity 0.2s ease-out;
+}
+
+
+/* Estiliza o polegar da barra de rolagem */
+.scroll::-webkit-scrollbar-thumb{
+    background-color: #3a3a3a;
+    border-radius:  6px;
+}
+
+@media (min-width: 1024px) {
+    .gridTemplate{
+        grid-template-columns: 1fr 1fr 1fr 20rem;
+    }
+}
+

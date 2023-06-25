@@ -1,0 +1,31 @@
+#Sobre .content{
+    margin: auto;
+    max-width: 1000px;
+}
+
+#Sobre .content h1{
+    padding-top: 20px;
+    font-size: 2em;
+    font-weight: bolder;
+    margin: 10px;
+    text-align: center;
+}
+
+#Sobre .content h2{
+    margin-top: 30px;
+}
+
+#Sobre .content p{
+    font-size: 1.2em;
+    margin: 10px 0px;
+}
+
+#Sobre .content .btn{
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 8px;
+    color: white;
+    border-radius: 8px;
+    background-color: var(--pink2);
+}

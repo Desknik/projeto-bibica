@@ -1,0 +1,93 @@
+.Mostruario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 0px;
+    overflow: hidden;
+    
+}
+
+.Mostruario h2{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.Mostruario p{
+    max-width: 800px;
+    text-align: center;
+}
+
+.Mostruario button{
+    font-size: 1.4em;
+    padding: 0px 15px;
+}
+
+
+.Mostruario button:hover{
+    opacity: 0.8;
+}
+
+.Mostruario .swipper .mySwiper{
+    position: relative;
+    width: 800px;
+    height: 330px;
+    margin: 20px 0px;
+}
+
+.Mostruario .swipper .SwiperSlide{
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 7px 13px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.Mostruario .swipper .SwiperSlide .swiperImg{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.Mostruario .swipper .mySwiper .swiper-pagination-bullet{
+    opacity: 0.9;
+    background-color: var(--primary);
+}
+
+.Mostruario .swipper .mySwiper .swiper-pagination-bullet-active{
+   background-color: var(--pink1);
+}
+
+/*
+xs, extra-small: 0px
+sm, small: 600px
+md, medium: 900px
+lg, large: 1200px
+xl, extra-large: 1536px */
+
+@media (max-width: 600px){
+    .Mostruario h2{
+        font-size: 1.7rem;
+    }
+
+    .Mostruario .swipper .mySwiper{
+        position: relative;
+        width: 430px;
+        height: 230px;
+        margin: 20px 0px;
+    }
+    
+    .Mostruario .swipper .SwiperSlide{
+        width: 300px;
+        height: 200px;
+    }
+
+    .Mostruario button{
+        font-size: 1.4em;
+        padding: 8px 15px 5px;
+    }
+}

@@ -1,0 +1,43 @@
+#Header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 3px 0px;
+    z-index: 30;
+}
+
+
+#Header .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#Header .navbar .navHamburguer{
+    cursor: pointer;
+}
+
+#Header .navbar .nav{
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#Header .navbar .navItem{
+    cursor: pointer;
+    color: white;
+    font-weight: 400;
+}
+
+#Header .navbar .navItem:hover{
+    opacity: 0.7;
+}
+
+#Header .navbar .user{
+    cursor: pointer;
+}
+
+#Header .navbar .user:hover{
+    opacity: 0.7;
+}

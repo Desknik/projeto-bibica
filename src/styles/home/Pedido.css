@@ -1,0 +1,56 @@
+.Pedido{  
+    position: relative;
+    height: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(../../assets/img/backgrounds/Background02.png);
+}
+
+.Pedido .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.Pedido h2{
+    color:white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.Pedido p{
+    max-width: 900px;
+    text-align: center;
+    color:white;
+}
+
+.Pedido a{
+    font-size: 1.4em;
+    padding: 1px 15px;
+}
+
+.Pedido a:hover{
+    opacity: 0.8;
+}
+
+@media (max-width: 600px){
+    .Pedido h2{
+     font-size: 1.7rem;
+ }
+
+ .Pedido a{
+    font-size: 1.4em;
+    padding: 8px 15px 3px;
+}
+}

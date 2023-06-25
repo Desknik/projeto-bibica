@@ -1,0 +1,24 @@
+.Desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Desc h2{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.Desc p{
+    text-align: center;
+    max-width: 800px;
+}
+
+@media (max-width: 600px){
+    .Desc h2{
+     font-size: 1.7rem;
+ }
+}
