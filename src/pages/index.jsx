@@ -89,28 +89,27 @@ export default function Home({decoracoes}) {
 
           <div className="rightBox">
             <Swiper
-              effect={'coverflow'}
-              centeredSlides={true}  
-              loop={true}
-              slidesPerView={'auto'}
-              coverflowEffect={
-                {
-                  rotate: 0,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 2.5,
-                }
-              }
-              rewind={true}
-              grabCursor={true}
-              autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-              
-              initialSlide={1}
-              modules={[Autoplay, EffectCoverflow]}
-              className="mySwiper"
+             effect={'coverflow'}
+             coverflowEffect={
+               {
+                 rotate: 0,
+                 stretch: 0,
+                 depth: 100,
+                 modifier: 2.5,
+               }
+             }
+             slidesPerView={'auto'}
+             centeredSlides={true}
+             grabCursor={true}
+             loop={true}
+             autoplay={{
+               delay: 3000,
+               disableOnInteraction: true,
+             }}
+           
+             modules={[Autoplay, EffectCoverflow]}
+             className="mySwiper"
+             rewind={true}
             >
               <SwiperSlide className='SwiperSlide'>
                 <div className='swiperContent'>
@@ -175,7 +174,7 @@ export default function Home({decoracoes}) {
                 loop={true}
                 autoplay={{
                   delay: 3000,
-                  disableOnInteraction: false,
+                  disableOnInteraction: true,
                 }}
                 pagination={{
                   clickable: true,
