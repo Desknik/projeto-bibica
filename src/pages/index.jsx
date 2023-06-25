@@ -151,12 +151,18 @@ export default function Home({decoracoes}) {
         </div>
       </section>
 
+      <div className="">
+        {decoracoes.map(decoracao => (
+          <p>{decoracao.id}</p>
+        ))}
+      </div>
+
       <section id="Mostruario">
         <div className='Mostruario'>
           <h2 className={`${bernadette.className} text-gray-800 !text-3xl`}>Transforme seus eventos em ocasiões inesquecíveis</h2>
           <p className='font-medium text-gray-800 text-center md:text-lg sm:text-base text-sm'>Nós temos a solução perfeita para transformar sua  festa infantil, um aniversário de 15 anos ou até mesmo seu casamento em uma ocasião inesquecível. Com nossas incríveis decorações, você pode criar um ambiente único e mágico que irá surpreender e encantar seus convidados!</p>
       
-          {!!decoracoes && decoracoes.length > 0 && 
+          {decoracoes.length > 0 && 
             <div className="swipper">
               <Swiper
                 effect={'coverflow'}
@@ -238,13 +244,14 @@ Home.getLayout = function getLayout(page) {
 }
 
 
-export async function getInitialProps() {
+export async function getServerSideProps() {
   const prisma = new PrismaClient();
   const decoracoes = await prisma.decoracoes.findMany({
     where: { disponivel: true },
     include: { imagem: true},
     take: 5
   });
+
   await prisma.$disconnect();
 
   return {
