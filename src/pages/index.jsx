@@ -26,7 +26,7 @@ import { FaHeart } from "react-icons/fa";
 
 // import required modules
 import { Autoplay, EffectCoverflow, Pagination } from "swiper";
-//import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 //import { createInitialClassUsers, createInitialSituations } from '@/utils/db';
 import Link from 'next/link';
 
@@ -237,13 +237,13 @@ Home.getLayout = function getLayout(page) {
   )
 }
 
-/*
+
 export async function getServerSideProps(ctx) {
   /* Criará os dados iniciais do banco */
   //await createInitialClassUsers(); //Cria as classses de usuários iniciais caso não existam no banco
   //await createInitialSituations(); //Cria os tipos de situações iniciais caso não não existam no banco
  
-  /*
+  
   const prisma = new PrismaClient();
   const decoracoes = await prisma.decoracoes.findMany({
     where: { disponivel: true },
@@ -256,4 +256,4 @@ export async function getServerSideProps(ctx) {
     props: {decoracoes},
   };
   
-}*/
+}
