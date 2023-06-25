@@ -30,7 +30,7 @@ import { PrismaClient } from '@prisma/client';
 //import { createInitialClassUsers, createInitialSituations } from '@/utils/db';
 import Link from 'next/link';
 
-
+const prisma = new PrismaClient();
 
 export default function Home({decoracoes}) {
 
@@ -245,14 +245,11 @@ Home.getLayout = function getLayout(page) {
 
 
 export async function getServerSideProps() {
-  const prisma = new PrismaClient();
   const decoracoes = await prisma.decoracoes.findMany({
     where: { disponivel: true },
     include: { imagem: true},
     take: 5
   });
-
-  await prisma.$disconnect();
 
   return {
     props: {decoracoes},
