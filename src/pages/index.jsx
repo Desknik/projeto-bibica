@@ -43,7 +43,7 @@ export default function Home({decoracoes}) {
       <section className={`Hero relative bg-center sm:h-96`}>
         <div className="filter"></div>
         
-        <div className="flex flex-col justify-center items-center gap-3 max-md:mt-10">
+        <div className="flex flex-col justify-center items-center gap-3 max-md:mt-10 z-30">
           <Image style={{minWidth:'10em'}} className='w-4/6' src={LogoImage} alt="Logo"/>
           <div className={`HeroPBox my-8 text-base lg:text-lg px-5`}>
             <p className='md:hidden md:font-medium font-semibold text-white text-center md:text-lg sm:text-base text-sm'>
