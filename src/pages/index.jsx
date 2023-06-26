@@ -246,6 +246,7 @@ export async function getServerSideProps() {
     where: { disponivel: true },
     select: { id:true, imagem: true},
     take: 5
+
   });
 
   return {

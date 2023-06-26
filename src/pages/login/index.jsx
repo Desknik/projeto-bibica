@@ -85,7 +85,7 @@ export default function Login() {
 
       </Head>
       <Navbar/>
-      <main className="flex min-h-full items-center justify-center pt-48 px-4 py-12 sm:px-6 lg:px-8">
+      <main className="flex min-h-full items-center justify-center lg:mt-0 md:-mt-20 -mt-28 pt-48 px-4 py-12 sm:px-6 lg:px-8">
           <div className="w-full max-w-sm space-y-8 ">
             <div className=''>
               <h2 className={`${bernadette.className} mt-6 text-center text-3xl tracking-tight`} >Logar na minha conta</h2>

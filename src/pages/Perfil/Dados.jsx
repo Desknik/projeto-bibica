@@ -137,8 +137,8 @@ export default function Perfil(userData) {
             <title>Meus Dados</title>
         </Head>
         {!success && !!user && !user.CompletedDetails && 
-            <div className="flex justify-center items-center w-full h-8 bg-red-400/50">
-                <p className='text-white font-medium'>Atualize seus dados para poder consumir nossos serviços</p>
+            <div className="flex justify-center items-center w-full p-1 bg-red-400/50">
+                <p className='text-white font-medium text-center'>Atualize seus dados para poder consumir nossos serviços</p>
             </div>
         }
 
