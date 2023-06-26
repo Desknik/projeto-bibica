@@ -179,25 +179,30 @@ export default function Perfil({Produtos}) {
         limparCarrinho()
 
         
-      const data = await response.json();
+        const data = await response.json();
         const { nome, codigoPedido, telefone } = data;
         
         const mensagem = `Oi, aqui é o(a) ${nome}. Acabei de fazer um pedido com o código ${codigoPedido}. Gostaria de confirmar o pagamento através do PIX. Aguardo o seu contato com o código do PIX. Obrigado!`;
         setLinkWhatsapp(`https://api.whatsapp.com/send?phone=55${telefone}&text=${encodeURIComponent(mensagem)}`)
         setSuccessModal(true)
-
-        window.open(linkWhatsApp, '_blank');
+  
       }
       else{
         const errorResponse = await response.json();
         throw new Error(errorResponse.message);
       }
-
     } 
     catch (error) {
       handleError(error.message)
     }
   }
+
+  useEffect(() => {
+    if (linkWhatsApp) {
+      window.open(linkWhatsApp, '_blank');
+    }
+  }, [linkWhatsApp]);
+
 
   /* Products*/
   const [openModal, setOpenModal] = useState(false)
@@ -518,7 +523,7 @@ export default function Perfil({Produtos}) {
                 </div>
             </div>
         
-            <div className="lg:col-span-3 md:col-span-6 col-span-12 max-lg:order-3">
+            <div className="lg:col-span-3 md:col-span-12 col-span-12 max-lg:order-3">
               <div className="sticky top-0">
                 <div className="flex flex-col justify-center items-center bg-gray-50 rounded-sm shadow-md">
                   <h2 className='p-4 border-b border-b-gray-200 text-xl'>RESUMO</h2>
@@ -529,7 +534,7 @@ export default function Perfil({Produtos}) {
                       <span className='text-lg text-gray-600 font-sans'> {formatarValorMonetario(subTotal)}</span>
                   </div>
 
-                  <div className="w-full flex flex-wrap justify-center items-center pb-2 gap-3">
+                  <div className="w-full  flex-wrap justify-center items-center pb-2 gap-3 hidden">
                       <p className='text-lg text-gray-600 font-sans'>Desconto:</p>
                       <span className='text-lg text-gray-600 font-sans'> {formatarValorMonetario(desconto)}</span>
                   </div>
@@ -547,7 +552,7 @@ export default function Perfil({Produtos}) {
               </div>
             </div>
 
-            <div className="lg:col-span-9 md:col-span-6 col-span-12">
+            <div className="lg:col-span-9 md:col-span-6 col-span-12 hidden">
               <div className="w-full flex max-lg:flex-col gap-3">
 
                 <div className="w-full bg-gray-50 rounded-sm shadow-md p-3">
@@ -596,7 +601,7 @@ export default function Perfil({Produtos}) {
 
         {/* Top Produtos */}
         <div className="col-span-5 mt-5">
-          <h2 className='block sticky top-0 text-lg font-semibold py-3 mb-2'>Produtos em Destaque</h2>
+          <h2 className='block text-lg font-semibold py-3 mb-2'>Produtos em Destaque</h2>
           <div className="grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 max-sm:grid-cols-2 x grid-cols-1 gap-x-5 gap-y-5">
             
             {Produtos.map(produto => (

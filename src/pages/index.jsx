@@ -27,7 +27,7 @@ import { FaHeart } from "react-icons/fa";
 // import required modules
 import { Autoplay, EffectCoverflow, Pagination } from "swiper";
 import { PrismaClient } from '@prisma/client';
-//import { createInitialClassUsers, createInitialSituations } from '@/utils/db';
+import { createInitialClassUsers, createInitialSituations, createInitialTelefone} from '@/utils/db';
 import Link from 'next/link';
 
 const prisma = new PrismaClient();
@@ -36,7 +36,7 @@ export default function Home({decoracoes}) {
 
   return (
     <>
-     <Head>
+      <Head>
         <title>Home</title>
       </Head>
         
@@ -212,7 +212,7 @@ export default function Home({decoracoes}) {
             <div className="absolute w-full h-full bg-gray-800/30 md:hidden"></div>
 
             <div className="flex flex-col justify-center items-center z-10 p-10 absolute w-full md:hidden">
-              <h2 className={`${bernadette.className} text-white text-3xl`}>Conheça nossa Doceria</h2>
+              <h2 className={`${bernadette.className} text-white text-center text-3xl`}>Conheça nossa Doceria</h2>
               <p className='font-semi text-white text-center md:text-lg sm:text-base text-sm'>Venha conhecer a história da Doceria Bibica e descobrir como oferecemos a melhor experiência em doces e decorações para eventos especiais. Clique abaixo para saber mais.</p>
               <Link href="/Sobre" className={`${bernadette.className} z-30 text-white text-2xl transition-all md:hover:opacity-80`}>Saiba Mais</Link>
             </div>
@@ -238,6 +238,10 @@ Home.getLayout = function getLayout(page) {
 
 
 export async function getServerSideProps() {
+  await createInitialClassUsers(); //Cria as classses de usuários iniciais caso não existam no banco
+  await createInitialSituations(); //Cria os tipos de situações iniciais caso não não existam no banco
+  await createInitialTelefone(); //Cria o número de contato inicial caso não tenha um
+ 
   const decoracoes = await prisma.decoracoes.findMany({
     where: { disponivel: true },
     select: { id:true, imagem: true},

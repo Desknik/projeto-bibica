@@ -194,35 +194,6 @@ export default function Produtos({Produtos, filteredAtributes}) {
     
   }
 
-  const handleRegisterPedido = async () => {
-
-    try {
-      setRequisição(true)
-      const response = await fetch('/api/compra', {
-        method: 'PUT',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(
-
-          {idProduto: selectedProduct.id, 
-          countProduct, 
-          precoUnitario:selectedProduct.precoUnitario, 
-          precoFinal: finalPrice,
-          idUsuario: user.id }
-        ),
-      });
-
-      if(!response.ok){
-        const errorResponse = await response.json();
-        throw new Error(errorResponse.message);
-      }
-      
-    } 
-    catch (error) {
-      handleError(error.message)
-    }
-    setRequisição(false)
-  }
-
   const [requisição, setRequisição] = useState()
 
   return (
@@ -231,55 +202,6 @@ export default function Produtos({Produtos, filteredAtributes}) {
         <title>Produtos</title>
       </Head>
 
-      <Modal tittle={'Confirmar Compra'} isOpen={openPayModal} onClose={() => setOpenPayModal(false)}>
-        <div>
-          {selectedProduct.length != 0 &&
-            <div className="flex justify-between gap-x-3 gap-y-3">
-
-              <div className="flex flex-col gap-2">
-                <div className="">
-                  <p className='font-semibold'>Produto:</p>
-                  <span className='text-gray-700'>{selectedProduct.nome}</span>
-                </div>
-
-                <div className="">
-                  <p className='font-semibold'>Sabor:</p>
-                  <span className='text-gray-700'>{selectedProduct.sabor.sabor}</span>
-                </div>
-                
-                <div className="">
-                  <p className='font-semibold'>Unidade:</p>
-                  <span className='text-gray-700'>{selectedProduct.unidadeMedida.tipo}</span>
-                </div>
-
-                <div className="">
-                  <p className='font-semibold'>Preço:</p>
-                  <span className='font-semibold text-xl text-pink-500 '>{formatarValorMonetario(finalPrice)}</span>
-                </div>
-
-              </div>
-
-              <div className='relative mb-3' >
-                <img className='w-28 rounded-xl ' src={`https://res.cloudinary.com/divmuffya/image/upload/v${selectedProduct.imagem.version}/${selectedProduct.imagem.publicId}.${selectedProduct.imagem.format}`} alt={selectedProduct.nome} />
-                <div className="">
-                  <p className='font-semibold'>Quantidade:</p>
-                  <div className="flex items-center gap-3">
-                    <button onClick={() => {countProduct != 1 && setCountProduct(countProduct - 1)}} className={`flex justify-center items-center w-6 h-5 font-semibold text-lg rounded-md p-2 pt-1 ${countProduct == 1? 'bg-gray-300' : 'bg-gray-200'}`}>-</button>
-                    <span>{countProduct}</span>
-                    <button onClick={() => setCountProduct(countProduct + 1)} className='flex justify-center items-center w-6 h-5 font-semibold text-lg bg-gray-200 rounded-md p-2 pt-1'>+</button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          }
-          <div className="md:flex gap-3 justify-center items-center">
-            <button disabled={requisição} onClick={handleRegisterPedido} className={`mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-pink-400 px-8 py-2.5 text-base font-medium text-white transition-colors hover:bg-pink-500 ${requisição && 'opacity-70'}`}>
-                Finalizar Pedido
-            </button>
-          </div>
-        </div>
-      </Modal>
 
 
       <Modal tittle={'Olá!'} isOpen={openLoginModal} onClose={() => setOpenLoginModal(false)}>

@@ -5,7 +5,7 @@ import Logo from '../../../assets/img/logo/logo.svg'
 import {RxDashboard} from "react-icons/rx";
 import {TbClipboardText, TbBoxSeam} from "react-icons/tb";
 import {FaCalendarAlt, FaUsers} from "react-icons/fa";
-import {BsKanban, BsBarChart, BsFlower3} from "react-icons/bs";
+import {BsKanban, BsFillTelephoneFill, BsFlower3} from "react-icons/bs";
 import {BiCake, BiExit} from "react-icons/bi";
 
 import { useRouter } from 'next/router'
@@ -47,28 +47,30 @@ export default function Sidebar({openMenuHamburguer, setOpenMenuHamburguer}) {
                                     <TbBoxSeam className='text-4xl'/>
                                     <span className='font-normal text-sm'>Produtos</span>
                                 </Link>
-                                
-                                <Link href={{}} className={`flex flex-col justify-center mb-5 items-center transition-all hover:scale-105 hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/graficos`)? 'text-violet-500' : 'text-zinc-500' }`}>
-                                    <BsBarChart className='text-3xl'/>
-                                    <span className='font-normal text-sm'>Gráficos</span>
-                                </Link>
 
                                 <Link href={'/dashboard/decoracoes'} className={`flex flex-col justify-center mb-5 items-center transition-all hover:scale-105 hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/decoracoes`)? 'text-violet-500' : 'text-zinc-500' }`}>
                                     <BiCake className='text-3xl'/>
                                     <span className='font-normal text-sm'>Decorações</span>
                                 </Link>
+
                             </div>
 
                             <div className="">
-                                <Link href={{}} className={`flex flex-col justify-center mb-5 items-center transition-all hover:scale-105 hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
-                                    <FaCalendarAlt className='text-2xl'/>
-                                    <span className='font-normal text-sm'>Calendário</span>
+                                <Link href={'/dashboard/telefone'} className={`flex flex-col justify-center mb-5 items-center transition-all hover:scale-105 hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/telefone`)? 'text-violet-500' : 'text-zinc-500' }`}>
+                                    <BsFillTelephoneFill className='text-3xl'/>
+                                    <span className='font-normal text-center text-sm'>Telefone</span>
                                 </Link>
+                                <div className="hidden">
+                                    <Link href={{}} className={`flex flex-col justify-center mb-5 items-center transition-all hover:scale-105 hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
+                                        <FaCalendarAlt className='text-2xl'/>
+                                        <span className='font-normal text-sm'>Calendário</span>
+                                    </Link>
 
-                                <Link href={{}} className={`flex flex-col justify-center mb-5 items-center transition-all hover:scale-105 hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
-                                    <BsKanban className='text-2xl'/>
-                                    <span className='font-normal text-sm'>Kanban</span>
-                                </Link>
+                                    <Link href={{}} className={`flex flex-col justify-center mb-5 items-center transition-all hover:scale-105 hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
+                                        <BsKanban className='text-2xl'/>
+                                        <span className='font-normal text-sm'>Kanban</span>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
 
@@ -88,7 +90,7 @@ export default function Sidebar({openMenuHamburguer, setOpenMenuHamburguer}) {
 
               <div className="fixed inset-y-0 left-0 z-10 w-full overflow-y-auto bg-zinc-800 px-6 py-6 sm:max-w-xs sm:ring-1 sm:ring-gray-900/10">
                 <div className="flex items-center justify-end">
-                  <button onClick={() => setOpenMenuHamburguer(false)} type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700">
+                  <button onClick={() => setOpenMenuHamburguer(false)} type="button" className="-m-2.5 rounded-md p-2.5 text-gray-500">
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -117,11 +119,6 @@ export default function Sidebar({openMenuHamburguer, setOpenMenuHamburguer}) {
                                     <TbBoxSeam className='text-3xl'/>
                                     <span className='font-normal text-lg'>Produtos</span>
                                 </Link>
-                                
-                                <Link href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/graficos`)? 'text-violet-500' : 'text-zinc-500' }`}>
-                                    <BsBarChart className='text-3xl'/>
-                                    <span className='font-normal text-lg'>Gráficos</span>
-                                </Link>
 
                                 <Link href={'/dashboard/decoracoes'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/decoracoes`)? 'text-violet-500' : 'text-zinc-500' }`}>
                                     <BiCake className='text-3xl'/>
@@ -130,15 +127,22 @@ export default function Sidebar({openMenuHamburguer, setOpenMenuHamburguer}) {
                             </div>
 
                             <div className="">
-                                <Link href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
-                                    <FaCalendarAlt className='text-3xl'/>
-                                    <span className='font-normal text-lg'>Calendário</span>
+                                <Link href={'/dashboard/telefone'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/telefone`)? 'text-violet-500' : 'text-zinc-500' }`}>
+                                    <BsFillTelephoneFill className='text-3xl'/>
+                                    <span className='font-normal text-lg'>Alterar Telefone</span>
                                 </Link>
 
-                                <Link href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
-                                    <BsKanban className='text-3xl'/>
-                                    <span className='font-normal text-lg'>Kanban</span>
-                                </Link>
+                                <div className="hidden">
+                                    <Link href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
+                                        <FaCalendarAlt className='text-3xl'/>
+                                        <span className='font-normal text-lg'>Calendário</span>
+                                    </Link>
+
+                                    <Link href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
+                                        <BsKanban className='text-3xl'/>
+                                        <span className='font-normal text-lg'>Kanban</span>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

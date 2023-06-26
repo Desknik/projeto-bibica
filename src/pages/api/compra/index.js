@@ -67,10 +67,20 @@ export default async function handleCompra(req, res) {
             }
 
             const codigoPedido = pedido.id
-            const telefone = 11968037722
+
+            //const telefone = 11968037722
+
+            const telefone = await prisma.telefone.findFirst({
+                where:{id:1}
+            })
+
+            const numero = telefone.numero
+
+            const numeroFormatado = numero.replace(/\D/g, "");
+
 
             await prisma.$disconnect();
-            return res.status(201).json({ nome:nomeFormatado, codigoPedido, telefone })
+            return res.status(201).json({ nome:nomeFormatado, codigoPedido, telefone:numeroFormatado })
 
         }else{
             await prisma.$disconnect();

@@ -84,7 +84,7 @@ export default function Perfil(userData) {
                 throw new Error(errorResponse.message);
             }
           } catch (error) {
-                handleError(error.message)
+                handleError("CEP INVÁLIDO")
           }
 
     }
@@ -174,7 +174,7 @@ export default function Perfil(userData) {
                                 <label for="email" className="block text-sm font-medium leading-6 text-gray-900">Email</label>
                                 <div className="mt-2">
                                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300  outline-none sm:max-w-md">
-                                        <input type="email" value={email} onChange={e => setEmail(e.target.value)} maxLength={75} name="email" id="email" autocomplete="email" className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-500 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Email"/>
+                                        <input type="email" disabled value={email} onChange={e => setEmail(e.target.value)} maxLength={75} name="email" id="email" autocomplete="email" className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-500 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Email"/>
                                     </div>
                                 </div>
                             </div>
