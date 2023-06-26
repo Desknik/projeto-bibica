@@ -36,7 +36,7 @@ export default function Sobre() {
          
           <div className="">
             <h2 className='font-semibold text-xl'>Equipe:</h2>
-            <p>Nossa equipe é composta por uma mistura de confeiteiros experientes e jovens talentos. Cada um deles tem um amor pela cozinha e um desejo de criar produtos incríveis. Trabalhamos juntos para criar uma experiência de sabor única para nossos clientes.</p>
+            <p>Nossa equipe é composta por uma mistura de confeiteiros experientes e jovens talentosos. Cada um deles tem um amor pela cozinha e um desejo de criar produtos incríveis. Trabalhamos juntos para criar uma experiência de sabor única para nossos clientes.</p>
           </div>
           
           <div className="">
