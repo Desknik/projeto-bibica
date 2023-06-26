@@ -198,7 +198,7 @@ export default function Home({decoracoes}) {
         </div>
       </section>
 
-      <section className='Pedido'>
+      <section className='Pedido bg-pink-300'>
         <div className="absolute w-full h-full bg-gray-800/20"></div>
         <div className='box z-30'>
             <h2 className={`${bernadette.className} text-white text-3xl`}>Faça seu pedido!</h2>

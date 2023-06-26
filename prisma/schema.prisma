@@ -193,3 +193,8 @@ model Imagens {
   decoracoes Decoracoes[]
   produtos Produto[]
 }
+
+model Telefone {
+  id     Int    @id @default(autoincrement())
+  numero String
+}
