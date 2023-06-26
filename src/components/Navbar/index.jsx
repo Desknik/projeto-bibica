@@ -57,7 +57,7 @@ export default function Navbar() {
   const [openMenuHamburguer, setOpenMenuHamburguer] = useState()
 
      return (
-       <header id='Header' className={`${currentRoute === `/` ? 'absolute bg-transparent' : `bg-pink-400 relative `}`}>
+       <header id='Header' className={`${currentRoute === `/` ? 'absolute bg-transparent' : `bg-neutral-900 relative `}`}>
             <nav className="w-full  mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
               <div className="flex lg:hidden w-20">
                 <button onClick={() => setOpenMenuHamburguer(true)} type="button" className="flex items-center justify-center p-2.5 text-white text-xl">
