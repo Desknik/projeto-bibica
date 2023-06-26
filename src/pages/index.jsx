@@ -220,7 +220,7 @@ export default function Home({decoracoes}) {
 
           <div className="flex flex-col justify-center items-center max-md:hidden md:w-1/2 lg:w-3/5 z-10 p-10">
             <h2 className={`${bernadette.className} text-gray-800 text-3xl`}>Conheça nossa Doceria</h2>
-            <p>Venha conhecer a história da Doceria Bibica e descobrir como oferecemos a melhor experiência em doces e decorações para eventos especiais. Clique abaixo para saber mais.</p>
+            <p className='font-semi text-center md:text-lg sm:text-base text-sm'>Venha conhecer a história da Doceria Bibica e descobrir como oferecemos a melhor experiência em doces e decorações para eventos especiais. Clique abaixo para saber mais.</p>
             <Link href="/Sobre" className={`${bernadette.className} z-30 text-gray-800 text-2xl transition-all md:hover:opacity-80`}>Saiba Mais</Link>
           </div>
         </section>
