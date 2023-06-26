@@ -105,12 +105,12 @@ export default function Perfil({userData, Pedidos}) {
               <table className='w-full font-sans'>
                 <thead className='border-b border-b-gray-200'>
                   <tr>
-                    <th scope='col' className='text-base text-gray-700 text-center font-bold p-4'>#</th>
-                    <th scope='col' className='text-base text-gray-700 text-center font-bold p-4'>Produtos</th>
-                    <th scope='col' className='text-base text-gray-700 text-left font-bold p-4'>Data</th>
-                    <th scope='col' className='text-base text-gray-700 text-left font-bold p-4'>Situação</th>
-                    <th scope='col' className='text-base text-gray-700 text-left font-bold p-4'>Valor Total</th>
-                    <th scope='col' className='text-base text-gray-700 text-center font-bold p-4'></th>
+                    <th scope='col' className='md:text-base text-sm text-gray-700 text-center font-bold md:p-4 p-2'>#</th>
+                    <th scope='col' className='md:text-base text-sm text-gray-700 text-center font-bold md:p-4 p-2'>Produtos</th>
+                    <th scope='col' className='md:text-base text-sm text-gray-700 text-left font-bold md:p-4 p-2'>Data</th>
+                    <th scope='col' className='md:text-base text-sm text-gray-700 text-left font-bold md:p-4 p-2'>Situação</th>
+                    <th scope='col' className='md:text-base text-sm text-gray-700 text-left font-bold whitespace-nowrap md:p-4 p-2'>Valor Total</th>
+                    <th scope='col' className='md:text-base text-sm text-gray-700 text-center font-bold md:p-4 p-2'></th>
                   </tr>
                 </thead>
 
@@ -119,17 +119,17 @@ export default function Perfil({userData, Pedidos}) {
 
                     <tr key={pedido.id} className='border-b border-b-gray-200'>
 
-                      <td className='text-md text-center p-4'><span className='bg-gray-200 rounded-full px-4 py-1'>{pedido.id}</span></td>
+                      <td className='md:text-md text-sm text-center md:p-4 p-3'><span className='bg-gray-200 rounded-full px-4 py-1'>{pedido.id}</span></td>
 
-                      <td className='text-md text-center p-4'>{pedido.detalhes.length}</td>
+                      <td className='md:text-md text-sm text-center md:p-4 p-3'>{pedido.detalhes.length}</td>
 
-                      <td className='text-md text-left p-4'>{formatarData(pedido.dataPedido)}</td>
+                      <td className='md:text-md text-sm text-left md:p-4 p-3'>{formatarData(pedido.dataPedido)}</td>
 
-                      <td className='text-md text-left whitespace-nowrap p-4'>{pedido.situacao.situacao}</td>
+                      <td className='md:text-md text-sm text-left whitespace-nowrap md:p-4 p-3'>{pedido.situacao.situacao}</td>
 
-                      <td className='text-md text-left whitespace-nowrap p-4'>{formatarValorMonetario(pedido.precoTotal)}</td>
+                      <td className='text-md text-sm text-left whitespace-nowrap md:p-4 p-3'>{formatarValorMonetario(pedido.precoTotal)}</td>
 
-                      <td className=''>
+                      <td className='pr-3'>
                         <div className="flex justify-center items-center gap-3">
                           <button onClick={() =>   {setPedidoModal(true); setSelectedPedido(pedido)}} className='flex justify-center items-center text-sm text-gray-500 whitespace-nowrap bg-gray-200 rounded-md p-2 pt-1 transition-colors shadow-md md:hover:bg-pink-300 md:hover:text-white'>Ver Pedido</button>
                         </div>
