@@ -298,7 +298,7 @@ export default function Produtos({Produtos, filteredAtributes}) {
 
       <div style={{minHeight: '80vh'}} className='my-5 md:px-20 sm:px-14 max-sm:px-5'>
 
-        <div className="sticky top-0 bg-white w-full flex flex-wrap justify-between items-center py-3 mb-4">
+        <div className="bg-white w-full flex flex-wrap justify-between items-center py-3 mb-4">
           <h1 className='text-xl font-semibold'>Todos nossos Produtos</h1>
           <div onClick={() => setShowMobileFilter(true)} className={`flex justify-center items-center gap-2 lg:hidden px-3 py-1.5 rounded-md text-white bg-zinc-800 transition-all ${showMobileFilter && '!bg-pink-400'}`}>Filtrar <BsFilter className='text-2xl'/></div>
         </div>
@@ -404,7 +404,7 @@ export default function Produtos({Produtos, filteredAtributes}) {
   )
 }
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
     const prisma = new PrismaClient();
 
     const filteredAtributes = await getAllFilteredAtributesController()
