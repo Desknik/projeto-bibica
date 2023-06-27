@@ -22,19 +22,17 @@ export default async function handleDeleteDecoracao(req, res) {
         const {EditDecoracaoId, selectedDisponibilityDecoracao} = req.body
 
         if(EditDecoracaoId != undefined && EditDecoracaoId != null && selectedDisponibilityDecoracao != undefined && selectedDisponibilityDecoracao != null){
-
-            console.log("caiu aqui");
             const decoracao = await prisma.decoracoes.update({
                 where: { id: parseInt(EditDecoracaoId) },
                 data: { disponivel: !selectedDisponibilityDecoracao },
             });
             await prisma.$disconnect();
-            res.status(200).json(decoracao);
+            return res.status(200).json(decoracao);
 
         }
         else{
             await prisma.$disconnect();
-            res.status(401).json({ message: "Ocorreu um erro"})
+            return res.status(401).json({ message: "Ocorreu um erro"})
         }
     } 
     else if(req.method === "PUT"){

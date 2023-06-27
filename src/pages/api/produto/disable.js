@@ -28,12 +28,12 @@ export default async function handleDeleteDecoracao(req, res) {
                 data: { disponivel: !disponibilidade }
             });
             await prisma.$disconnect();
-            res.status(200).json({ dados: updatedProduto });
+            return res.status(200).json({ dados: updatedProduto });
             
         }
         else{
             await prisma.$disconnect();
-            res.status(401).json({ message: "Ocorreu um erro"})
+            return res.status(401).json({ message: "Ocorreu um erro"})
         }
 
         
