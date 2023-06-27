@@ -938,7 +938,7 @@ export default function Produtos({Produtos, filteredAtributes}) {
             }
 
             {searchFilteredProdutos && dataType == 3 &&
-                <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-x-5 gap-y-5 mt-5">
+                <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-x-5 gap-y-5 mt-5">
 
                     {searchFilteredProdutos.map(produto => (
                         <div key={produto.id} onDoubleClick={() => {setOpenEditModal(true); handleProductSelect(produto)}} className="p-5 rounded-2xl bg-zinc-800 transition-all hover:scale-105 cursor-pointer">
