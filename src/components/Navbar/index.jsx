@@ -146,10 +146,11 @@ export default function Navbar() {
                 <div className="flow-root">
                   <div className="-my-6 divide-y divide-gray-500/30">
                     <div className="space-y-2 py-6">
-                      <Link href='/Produtos' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70">Produtos</Link>
-                      <Link href='/Decoracoes' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70">Decorações</Link>
-                      <Link href='/Sobre' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70">Sobre nós</Link>
+                      <Link onClick={() => setOpenMenuHamburguer(false)} href='/Produtos' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70">Produtos</Link>
+                      <Link onClick={() => setOpenMenuHamburguer(false)} href='/Decoracoes' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70">Decorações</Link>
+                      <Link onClick={() => setOpenMenuHamburguer(false)} href='/Sobre' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70">Sobre nós</Link>
                       <ScrollLink 
+                        onClick={() => setOpenMenuHamburguer(false)}
                         className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70 cursor-pointer"
                         to="footer"
                         spy={true}
@@ -163,17 +164,17 @@ export default function Navbar() {
                     <div className="py-6">
                     {user && 
                       <div>
-                        {!!user && user.userClass != 1 &&  <Link href='/Perfil' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70" role="menuitem" tabIndex="-1" id="user-menu-item-0">Meu Perfil</Link>}
+                        {!!user && user.userClass != 1 &&  <Link onClick={() => setOpenMenuHamburguer(false)} href='/Perfil' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70" role="menuitem" tabIndex="-1" id="user-menu-item-0">Meu Perfil</Link>}
                       
-                        {!!user && user.userClass == 1 && <Link href="/dashboard" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70" role="menuitem">Dashboard</Link> }
+                        {!!user && user.userClass == 1 && <Link onClick={() => setOpenMenuHamburguer(false)} href="/dashboard" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70" role="menuitem">Dashboard</Link> }
 
-                        <button onClick={handleLogout} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sair</button>
+                        <button onClick={() => {handleLogout; setOpenMenuHamburguer(false)}} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sair</button>
                       </div>  
                     }
 
                     {!user && 
                       <div>
-                        <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70" role="menuitem" tabIndex="-1" id="user-menu-item-0">Entrar</a>
+                        <Link href='/login' onClick={() => setOpenMenuHamburguer(false)} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:opacity-70" role="menuitem">Entrar</Link> 
                       </div>  
                     }
                     </div>

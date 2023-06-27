@@ -100,45 +100,45 @@ export default function Sidebar({openMenuHamburguer, setOpenMenuHamburguer}) {
                     <div className="-my-6 divide-y divide-gray-500/30">
                         <div className="">
                             <div className="border-b-2 border-zinc-700 pt-5 mb-5">
-                                <Link href={'/dashboard'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard`? 'text-violet-500' : 'text-zinc-500' }`}>
+                                <Link onClick={() => setOpenMenuHamburguer(false)} href={'/dashboard'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard`? 'text-violet-500' : 'text-zinc-500' }`}>
                                     <RxDashboard className='text-3xl'/>
                                     <span className='font-normal text-lg'>Painel</span>
                                 </Link>
 
-                                <Link href={'/dashboard/pedidos'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/pedidos`)? 'text-violet-500' : 'text-zinc-500' }`}>
+                                <Link onClick={() => setOpenMenuHamburguer(false)} href={'/dashboard/pedidos'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/pedidos`)? 'text-violet-500' : 'text-zinc-500' }`}>
                                     <TbClipboardText className='text-3xl'/>
                                     <span className='font-normal text-lg'>Pedidos</span>
                                 </Link>
 
-                                <Link href={'/dashboard/usuarios'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/usuarios`)? 'text-violet-500' : 'text-zinc-500' }`}>
+                                <Link onClick={() => setOpenMenuHamburguer(false)} href={'/dashboard/usuarios'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/usuarios`)? 'text-violet-500' : 'text-zinc-500' }`}>
                                     <FaUsers className='text-3xl'/>
                                     <span className='font-normal text-lg'>Usuarios</span>
                                 </Link>
 
-                                <Link href={'/dashboard/produtos'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/produtos`)? 'text-violet-500' : 'text-zinc-500' }`}>
+                                <Link onClick={() => setOpenMenuHamburguer(false)} href={'/dashboard/produtos'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/produtos`)? 'text-violet-500' : 'text-zinc-500' }`}>
                                     <TbBoxSeam className='text-3xl'/>
                                     <span className='font-normal text-lg'>Produtos</span>
                                 </Link>
 
-                                <Link href={'/dashboard/decoracoes'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/decoracoes`)? 'text-violet-500' : 'text-zinc-500' }`}>
+                                <Link onClick={() => setOpenMenuHamburguer(false)} href={'/dashboard/decoracoes'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/decoracoes`)? 'text-violet-500' : 'text-zinc-500' }`}>
                                     <BiCake className='text-3xl'/>
                                     <span className='font-normal text-lg'>Decorações</span>
                                 </Link>
                             </div>
 
                             <div className="">
-                                <Link href={'/dashboard/telefone'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/telefone`)? 'text-violet-500' : 'text-zinc-500' }`}>
+                                <Link onClick={() => setOpenMenuHamburguer(false)} href={'/dashboard/telefone'} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute.startsWith(`/dashboard/telefone`)? 'text-violet-500' : 'text-zinc-500' }`}>
                                     <BsFillTelephoneFill className='text-3xl'/>
                                     <span className='font-normal text-lg'>Alterar Telefone</span>
                                 </Link>
 
                                 <div className="hidden">
-                                    <Link href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
+                                    <Link onClick={() => setOpenMenuHamburguer(false)} href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
                                         <FaCalendarAlt className='text-3xl'/>
                                         <span className='font-normal text-lg'>Calendário</span>
                                     </Link>
 
-                                    <Link href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
+                                    <Link onClick={() => setOpenMenuHamburguer(false)} href={{}} className={`flex gap-1 mb-5 items-center hover:text-violet-500 ${currentRoute === `/dashboard/`? 'text-violet-500' : 'text-zinc-500' }`}>
                                         <BsKanban className='text-3xl'/>
                                         <span className='font-normal text-lg'>Kanban</span>
                                     </Link>
