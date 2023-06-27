@@ -26,7 +26,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-            <div className="sm:w-96 w-3/5 border-b border-b-pink-400 my-5"></div>
+            <div className="sm:w-96 w-3/5 border-b border-b-pink-300 my-5"></div>
 
             <div className="flex gap-3">
                 <a href="#" className='flex justify-center items-center w-10 h-10 rounded-full border-2 border-white transition-all md:hover:border-pink-400 md:hover:text-pink-400 '><FaFacebookF className='text-lg'/></a>

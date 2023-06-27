@@ -27,7 +27,7 @@ export default function Produtos({Produtos, filteredAtributes}) {
     const updateProdutos = async () => { // Função que busca todos produtos na api
         const response = await fetch('/api/produto');
         const data = await response.json();
-        setProdutos(data);
+        setProdutos(data.Produtos);
     }
 
     /* Modais */
@@ -459,8 +459,8 @@ export default function Produtos({Produtos, filteredAtributes}) {
 
         try{
             setRequisição(true)
-            const response = await fetch('/api/produto',{
-                method: 'DELETE', 
+            const response = await fetch('/api/produto/disable',{
+                method: 'POST', 
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({productId, disponibilidade}),
             });
@@ -1031,7 +1031,7 @@ export async function getServerSideProps(ctx) {
           ...produto,
           precoUnitario: produto.precoUnitario.toString(),
         };
-      });
+    });
 
       await prisma.$disconnect();
 

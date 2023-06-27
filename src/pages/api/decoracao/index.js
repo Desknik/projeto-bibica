@@ -32,24 +32,26 @@ export default async function handleDecoracao(req, res) {
     }
     //Cria Sabores
     else if(req.method === "PUT"){ 
-
+        
         const data = await getData(req)
 
+        const {registerImagem} = data.files
+        
         if(data){
             const {registerImagem} = data.files
             
             if(registerImagem){
-
+                
                 try {
-                    const Imagem = registerImagem.filepath
+                    const Imagem = registerImagem[0].filepath
                     const imageData = await uploadImage(Imagem, null, true)
-
+                    
                     const Decoracao = await prisma.$transaction(async (prisma) => {
                         const imagens = await prisma.imagens.create({
                             data: {
-                            publicId: imageData.public_id,
-                            format: imageData.format,
-                            version: imageData.version.toString(),
+                                publicId: imageData.public_id,
+                                format: imageData.format,
+                                version: imageData.version.toString(),
                             },
                         });
                         
@@ -59,7 +61,7 @@ export default async function handleDecoracao(req, res) {
                             }
                         });
                     });
-
+                    
                     await prisma.$disconnect();
                     res.status(200).json({ dados: Decoracao })
                 }
@@ -70,7 +72,7 @@ export default async function handleDecoracao(req, res) {
                         res.status(400).json({ message: "Imagem muito grande" });
                     } else {
                         await prisma.$disconnect();
-                        res.status(400).json({ message: "Ocorreu um erro." });
+                        res.status(400).json({ error, message: "Ocorreu um erro." });
                     }
                 }
             };
@@ -79,7 +81,6 @@ export default async function handleDecoracao(req, res) {
             await prisma.$disconnect();
             res.status(400).json({ message: 'Ocorreu um erro.' })
         }
-       
     }
     
     //Edita os Sabores
@@ -94,7 +95,7 @@ export default async function handleDecoracao(req, res) {
             if(editImagem){
 
                 try {
-                    const Imagem = editImagem.filepath;
+                    const Imagem = editImagem[0].filepath;
             
                     const imageData = await uploadImage(Imagem, editImagemPublicId, true);
             
@@ -132,28 +133,7 @@ export default async function handleDecoracao(req, res) {
         }
 
     }
-    //Desativa ou ativa os Sabores
-    else if(req.method === "DELETE"){ 
-
-        const data = await getData(req)
-
-
-        if(data){
-            const { EditDecoracaoId, selectedDisponibilityDecoracao } = data.fields
-
-            const decoracao = await prisma.decoracoes.update({
-                where: { id: parseInt(EditDecoracaoId) },
-                data: { disponivel: !selectedDisponibilityDecoracao },
-            });
-            await prisma.$disconnect();
-            res.status(200).json(decoracao);
-
-        }
-        else{
-            await prisma.$disconnect();
-            res.status(401).json({ message: "Ocorreu um erro"})
-        }
-    } 
+   
     else{
 
         await prisma.$disconnect();

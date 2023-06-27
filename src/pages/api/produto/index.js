@@ -62,10 +62,10 @@ export default async function handleProducts(req, res){
         .sort((a, b) => b.id - a.id) // Ordenação decrescente pelo ID
         .map((produto) => {
             return {
-              ...produto,
-              precoUnitario: produto.precoUnitario.toString(),
+            ...produto,
+            precoUnitario: produto.precoUnitario.toString(),
             };
-          });
+        });
 
         await prisma.$disconnect();
         return res.status(200).json({Produtos:produtosFormatados})
@@ -115,7 +115,7 @@ export default async function handleProducts(req, res){
                 return res.status(400).json({ message: 'O campo "Imagem" está vazio' });
             }
             
-            const Imagem = registerImagem.filepath
+            const Imagem = registerImagem[0].filepath
             const imageData = await uploadImage(Imagem)
             
            
@@ -130,13 +130,13 @@ export default async function handleProducts(req, res){
               
                 const produto = await prisma.produto.create({
                     data:{
-                        nome: registerProduto,
+                        nome: registerProduto[0],
                         categoriaId: parseInt(registerCategoria),
                         subCategoriaId: parseInt(registerSubCategoria),
                         unidadeMedidaId: parseInt(registerUnidade),
                         saborId: parseInt(registerSabor),
                         corId: parseInt(registerCor),
-                        descricao: registerDescricao,
+                        descricao: registerDescricao[0],
                         imagemId:imagens.id,
                         precoUnitario: parseFloat(registerPreco)
                     }
@@ -155,6 +155,8 @@ export default async function handleProducts(req, res){
     else if(req.method === "POST"){
 
         const data = await getData(req);
+
+        console.log(data);
 
         if(data) {
             const { editProdutoID, editProduto, editCategoria, editSubCategoria, editUnidade, editSabor, editCor, editDescricao, editPreco, editImagemPublicId } = data.fields;
@@ -197,20 +199,20 @@ export default async function handleProducts(req, res){
                 id: parseInt(editProdutoID)
                 },
                 data: {
-                nome: editProduto,
+                nome: editProduto[0],
                 categoriaId: parseInt(editCategoria),
                 subCategoriaId: parseInt(editSubCategoria),
                 unidadeMedidaId: parseInt(editUnidade),
                 saborId: parseInt(editSabor),
                 corId: parseInt(editCor),
-                descricao: editDescricao,
+                descricao: editDescricao[0],
                 precoUnitario: parseFloat(editPreco)
                 }
             });
       
             if(editImagem){
 
-                const Imagem = editImagem.filepath;
+                const Imagem = editImagem[0].filepath;
 
                 const imageData = await uploadImage(Imagem, editImagemPublicId);
         
@@ -235,25 +237,6 @@ export default async function handleProducts(req, res){
         }
         
     } 
-    else if(req.method === "DELETE"){
-
-        const data = await getData(req);
-
-        if(data) {
-
-            const { productId, disponibilidade } = data.fields;
-
-            const updatedProduto = await prisma.produto.update({
-                where: { id: parseInt(productId) },
-                data: { disponivel: !disponibilidade }
-            });
-            await prisma.$disconnect();
-            res.status(200).json({ dados: updatedProduto });
-            
-        }
-
-        
-    }
     else{
         await prisma.$disconnect();
         res.status(405).json('Método não permitido')

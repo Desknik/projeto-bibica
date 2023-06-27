@@ -93,14 +93,14 @@ export default function Produtos({Decoracoes}) {
       event.preventDefault();
 
       const formData = new FormData();
+      console.log(registerImagem)
       formData.append('registerImagem', registerImagem);
 
-     
       try{
           setRequisição(true)
           const response = await fetch('/api/decoracao',{
-              method: 'PUT', 
-            body: formData,
+                method: 'PUT', 
+                body: formData,
         });
         if(response.ok){
             setRegisterImagem("")
@@ -189,8 +189,8 @@ export default function Produtos({Decoracoes}) {
         try{
             
             setRequisição(true)
-            const response = await fetch('/api/decoracao',{
-                method: 'DELETE', 
+            const response = await fetch('/api/decoracao/delete',{
+                method: 'POST', 
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({EditDecoracaoId, selectedDisponibilityDecoracao}),
                 
@@ -221,7 +221,7 @@ export default function Produtos({Decoracoes}) {
           setRequisição(true)
           
           const response = await fetch('/api/decoracao/delete',{
-              method: 'DELETE', 
+              method: 'PUT', 
               headers: {"Content-Type": "application/json"},
               body: JSON.stringify({publicIdImagem}),
               

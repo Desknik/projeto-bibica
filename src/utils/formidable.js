@@ -1,9 +1,9 @@
-import formidable from 'formidable';
+import { IncomingForm } from 'formidable';
 
 export async function getData(formData) {
   const data = await new Promise(function (resolve, reject) {
 
-    const form = new formidable.IncomingForm({ keepExtensions: true });
+    const form = new IncomingForm({ keepExtensions: true });
 
     form.parse(formData, function (err, fields, files) {
       if (err) return reject(err);
@@ -12,5 +12,7 @@ export async function getData(formData) {
 
   });
 
+  console.log(data);
+  
   return data;
 }

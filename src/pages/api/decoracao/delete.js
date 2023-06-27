@@ -1,3 +1,4 @@
+import { getData } from "@/utils/formidable";
 import { PrismaClient } from "@prisma/client";
 
   
@@ -15,8 +16,28 @@ const prisma = new PrismaClient();
 
 export default async function handleDeleteDecoracao(req, res) {
 
-    
-    if(req.method === "DELETE"){
+    //Desativa ou ativa os Sabores
+    if(req.method === "POST"){ 
+
+        const {EditDecoracaoId, selectedDisponibilityDecoracao} = req.body
+
+        if(EditDecoracaoId != undefined && EditDecoracaoId != null && selectedDisponibilityDecoracao != undefined && selectedDisponibilityDecoracao != null){
+
+            console.log("caiu aqui");
+            const decoracao = await prisma.decoracoes.update({
+                where: { id: parseInt(EditDecoracaoId) },
+                data: { disponivel: !selectedDisponibilityDecoracao },
+            });
+            await prisma.$disconnect();
+            res.status(200).json(decoracao);
+
+        }
+        else{
+            await prisma.$disconnect();
+            res.status(401).json({ message: "Ocorreu um erro"})
+        }
+    } 
+    else if(req.method === "PUT"){
         const {publicIdImagem} = req.body;
 
         const imagem = await prisma.imagens.findUnique({
